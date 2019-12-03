@@ -1,41 +1,45 @@
-
-// Creating a grid and adding id to each field
 function gridPrint(id) {
-    const game = document.getElementById('game');
+    const game = document.getElementById("game");
     var div = document.createElement("DIV");
     game.appendChild(div);
-    div.classList.add('field');
+    div.classList.add("field");
     div.id = id;
-}
-
-for(let i=0; i<7; i++){
+  }
+  
+  for (let i = 0; i < 7; i++) {
     gridPrint(i);
-}
+  }
+  
+  // Setting up a first field of a ship
+  const shipStart = Math.floor(Math.random() * 5);
 
-// Setting up a first field of a ship
-const shipStart = Math.floor(Math.random() * 5);
-const ship = [shipStart];
 
-//bilding a ship
-function buildingShip(shipStart){
-    for(let i=1; i<3; i++){
-        ship.push(shipStart+i);
+class Ship{
+    constructor(startShip){
+        this.ship = [startShip];
     }
-    
-    ship.forEach(id => {
-        document.getElementById(id).classList.add('ship');
-    });
+    buildingShip(){
+              for (let i = 1; i < 3; i++) {
+              this.ship.push(shipStart + i);
+            
+        }
+    }
+    hitTheSheep(){
+        this.ship.push('kki');
+    }
 }
-buildingShip(shipStart)
 
-const game = document.getElementsByClassName('field');
-const gameArray = Array.from(game)
-
-gameArray.forEach(field => {
-    field.addEventListener('click', () => {
-        console.log(field);
-    });    
-});
-
+const ship = new Ship(shipStart);
+ship.buildingShip(shipStart);
 console.log(ship);
 
+const game = document.getElementsByClassName("field");
+const gameArray = Array.from(game);
+
+console.log(gameArray);
+let proba = 2;
+
+document.getElementById('1').addEventListener('click', ()=>{
+    ship.hitTheSheep();
+    console.log(ship.ship);
+});
