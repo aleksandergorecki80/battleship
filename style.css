@@ -1,0 +1,11 @@
+body {
+    background-color: green;
+}
+
+.field {
+    width: 30px;
+    height: 30px;
+    background-color: red;
+    border: solid 1px black;
+    float: left;
+}
